@@ -1,0 +1,30 @@
+package com.qa.test;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+
+import static io.restassured.RestAssured.*;
+public class testRest {
+	
+	@Test
+	public void sampleLogin() {
+		/*
+		 * Given application is up and running When i perform the GET request using the
+		 * given url Then the status code should be 200 Ok And the response body should
+		 * be in Json Format
+		 * 
+		 */
+		Response response = RestAssured.get("https://reqres.in/api/users?page=2");
+		JSONObject json = new JSONObject(response.asString());
+		System.out.println(json);
+		
+//		given().accept(ContentType.JSON).header("user-key", "cde67df2673438bb2fae8dc7e205e98451903940394343").when()
+//				.get("https://developers.zomato.com/api/v2.1/categories").then().statusCode(200);
+//
+	}
+
+	
+}

@@ -1,0 +1,63 @@
+package com.qa.test;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import io.restassured.RestAssured;
+import io.restassured.matcher.ResponseAwareMatcher;
+import static io.restassured.matcher.RestAssuredMatchers.*;
+
+import static io.restassured.RestAssured.*;
+import io.restassured.response.Response;
+import io.restassured.response.ResponseBody;
+
+import org.hamcrest.Matchers.*;
+import static org.hamcrest.Matcher.*;
+
+public class testRest {
+	
+	@Test
+	public void sampleLogin() {
+		/*
+		 * Given application is up and running When i perform the GET request using the
+		 * given url Then the status code should be 200 Ok And the response body should
+		 * be in Json Format
+		 * 
+		 */
+		RestAssured.baseURI = "https://rahulshettyacademy.com";
+		
+		Response response = RestAssured.get("https://reqres.in/api/users?page=2/");
+//		String resInString = response.asString();
+//		System.out.println(resInString);
+//		System.out.println(response.statusCode());
+//		int statusCode = response.getStatusCode();
+//		System.out.println(statusCode);
+		
+		given().queryParam("key","qaclick123").header("Content-Type","applicaion/json").
+		body("{\r\n"
+				+ "  \"location\": {\r\n"
+				+ "    \"lat\": -38.383494,\r\n"
+				+ "    \"lng\": 33.427362\r\n"
+				+ "  },\r\n"
+				+ "  \"accuracy\": 50,\r\n"
+				+ "  \"name\": \"Frontline house\",\r\n"
+				+ "  \"phone_number\": \"(+91) 983 893 3937\",\r\n"
+				+ "  \"address\": \"29, side layout, cohen 09\",\r\n"
+				+ "  \"types\": [\r\n"
+				+ "    \"shoe park\",\r\n"
+				+ "    \"shop\"\r\n"
+				+ "  ],\r\n"
+				+ "  \"website\": \"http://google.com\",\r\n"
+				+ "  \"language\": \"French-IN\"\r\n"
+				+ "}\r\n"
+				+ "").when();
+	}
+		
+		
+	
+
+
+
+	
+}

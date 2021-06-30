@@ -1,0 +1,31 @@
+package com.qa.test;
+
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import gherkin.deps.com.google.gson.JsonObject;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+public class testRest {
+	
+	@Test
+	public void sampleLogin() {
+		/*
+		 * Given application is up and running When i perform the GET request using the
+		 * given url Then the status code should be 200 Ok And the response body should
+		 * be in Json Format
+		 * 
+		 */
+		Response response = RestAssured.get("https://reqres.in/api/users?page=2/");
+		String resInString = response.asString();
+		System.out.println(resInString);
+		System.out.println(response.statusCode());
+
+		SoftAssert sa = new SoftAssert();
+		sa.assertEquals(resInString,200);
+		sa.assertNotEquals(resInString,200);
+		assertAll();
+	}
+
+	
+}

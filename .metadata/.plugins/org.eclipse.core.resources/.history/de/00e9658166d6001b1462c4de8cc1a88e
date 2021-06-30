@@ -1,0 +1,24 @@
+package com.qa.test;
+
+import org.testng.annotations.Test;
+
+public class testRest {
+	
+	@Test
+	public void sampleLogin() {
+		/*
+		 * Given application is up and running When i perform the GET request using the
+		 * given url Then the status code should be 200 Ok And the response body should
+		 * be in Json Format
+		 * 
+		 */
+		
+		
+
+		
+		given().accept(ContentType.JSON).header("user-key", "cde67df2673438bb2fae8dc7e205e98451903940394343").when()
+				.get("https://developers.zomato.com/api/v2.1/categories").then().statusCode(200);
+
+	}
+
+}
